@@ -11,6 +11,8 @@ This project simulates household energy usage using an agent-based model and rei
 - `q_learning_agent.py`: Implements the QLearningAgent class, which uses Q-learning to make decisions based on the environment's state.
 - `energy_model.py`: Integrates the agent, environment, and reinforcement learning to run the simulation and evaluate different policies.
 - `main.py`: Entry point to run the simulation.
+- `data/`: Datasets of generated household energy usage and reductions
+- `visualisations/`: Generated graphs
 
 ## How to Run
 
