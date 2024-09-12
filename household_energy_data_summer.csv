@@ -1,0 +1,138 @@
+House Type,Num People,Electricity Usage,Gas Usage,Energy Saving
+4+ bedroom,4,4006.19,14837.85,No
+Medium 2-3 bedroom,3,2717.69,12152.66,No
+4+ bedroom,6,2912.55,13194.71,Yes
+Medium 2-3 bedroom,2,2731.6,10196.02,Yes
+Medium 2-3 bedroom,2,2909.91,10106.83,Yes
+Medium 2-3 bedroom,2,3059.97,12552.01,No
+4+ bedroom,4,5066.07,13693.3,No
+Medium 2-3 bedroom,2,2732.95,11773.26,No
+Medium 2-3 bedroom,3,2925.57,13765.74,No
+Medium 2-3 bedroom,3,2458.87,12648.75,No
+Medium 2-3 bedroom,3,2725.33,12442.71,No
+Flat/1-bedroom,1,2081.09,6323.19,Yes
+Medium 2-3 bedroom,2,2847.99,11137.52,No
+Medium 2-3 bedroom,2,2618.72,8116.18,Yes
+Medium 2-3 bedroom,2,3207.82,11175.2,No
+4+ bedroom,5,3909.94,15458.75,No
+4+ bedroom,5,4365.07,16853.36,No
+Medium 2-3 bedroom,2,2265.86,11604.58,No
+4+ bedroom,4,3442.45,17296.21,No
+4+ bedroom,5,2867.86,13388.81,Yes
+Flat/1-bedroom,1,2144.33,7955.66,No
+Flat/1-bedroom,1,1739.9,9408.43,Yes
+Medium 2-3 bedroom,2,2549.65,13905.8,No
+Flat/1-bedroom,1,2217.0,7823.38,No
+Flat/1-bedroom,1,2240.22,7485.24,No
+Medium 2-3 bedroom,2,2760.23,11411.08,No
+Flat/1-bedroom,1,1495.43,6825.87,No
+Medium 2-3 bedroom,2,2713.78,9617.03,Yes
+Medium 2-3 bedroom,2,3223.46,10571.08,No
+Flat/1-bedroom,1,1889.25,6427.07,Yes
+Flat/1-bedroom,1,1499.85,7584.84,No
+Medium 2-3 bedroom,2,2925.37,9591.59,No
+Medium 2-3 bedroom,2,2200.59,13119.62,Yes
+4+ bedroom,4,4445.78,16298.77,No
+Flat/1-bedroom,1,1763.43,6852.81,Yes
+Medium 2-3 bedroom,2,2454.3,10144.91,Yes
+4+ bedroom,4,3352.81,20884.05,Yes
+Flat/1-bedroom,1,1631.73,9037.07,No
+Medium 2-3 bedroom,2,2871.31,7342.83,Yes
+Medium 2-3 bedroom,2,2172.7,14615.82,No
+Flat/1-bedroom,1,1966.27,8139.63,No
+Medium 2-3 bedroom,3,3064.08,13240.21,No
+4+ bedroom,5,4016.02,21142.62,No
+Medium 2-3 bedroom,3,2332.43,8967.7,No
+4+ bedroom,4,4851.1,19393.61,No
+Flat/1-bedroom,1,1732.81,8219.61,No
+4+ bedroom,4,3090.55,10576.06,Yes
+4+ bedroom,6,4487.56,14771.54,No
+4+ bedroom,4,3911.52,16755.17,No
+4+ bedroom,4,4229.2,18530.64,No
+Medium 2-3 bedroom,2,2565.97,10426.16,Yes
+Medium 2-3 bedroom,2,2251.05,10585.46,No
+Medium 2-3 bedroom,2,2619.25,9681.87,Yes
+Flat/1-bedroom,1,1201.94,6426.11,No
+Medium 2-3 bedroom,3,3289.09,11845.63,No
+Medium 2-3 bedroom,2,2216.91,14061.44,No
+4+ bedroom,4,3938.62,18487.66,No
+4+ bedroom,4,4604.14,15527.73,No
+Flat/1-bedroom,1,1721.12,4969.12,No
+Flat/1-bedroom,1,1671.55,5244.77,No
+Flat/1-bedroom,1,1442.4,5494.99,No
+Medium 2-3 bedroom,3,2570.71,11773.78,No
+Medium 2-3 bedroom,2,2739.57,9729.64,Yes
+Flat/1-bedroom,1,1455.65,6501.62,No
+Medium 2-3 bedroom,3,3741.76,12393.01,No
+Medium 2-3 bedroom,2,2626.48,9067.52,Yes
+4+ bedroom,4,5033.56,17585.81,No
+Flat/1-bedroom,1,1496.55,6162.22,Yes
+Flat/1-bedroom,1,1937.08,6515.4,No
+Medium 2-3 bedroom,2,1963.41,8725.81,No
+Medium 2-3 bedroom,3,2752.98,7340.69,Yes
+4+ bedroom,4,4174.35,17537.82,No
+Medium 2-3 bedroom,2,3192.27,11854.49,No
+Flat/1-bedroom,1,1430.19,7115.85,No
+Medium 2-3 bedroom,2,3106.25,13516.23,No
+4+ bedroom,5,3657.1,14977.09,Yes
+Medium 2-3 bedroom,3,2628.43,13940.87,Yes
+Medium 2-3 bedroom,3,3453.98,12256.69,No
+Medium 2-3 bedroom,3,2772.36,12421.55,No
+Medium 2-3 bedroom,3,2504.28,11058.42,Yes
+Flat/1-bedroom,1,1982.86,7619.2,No
+4+ bedroom,5,4409.46,12131.49,Yes
+Medium 2-3 bedroom,3,2197.68,8096.88,Yes
+Medium 2-3 bedroom,3,3906.12,9816.35,No
+Medium 2-3 bedroom,3,2973.95,11926.21,No
+Flat/1-bedroom,1,1832.11,7789.32,No
+Medium 2-3 bedroom,2,2427.83,10455.89,No
+Flat/1-bedroom,1,1461.8,8748.7,Yes
+Medium 2-3 bedroom,3,2709.09,11108.56,Yes
+Medium 2-3 bedroom,2,3545.13,11789.89,No
+Flat/1-bedroom,1,2119.56,7554.17,No
+Medium 2-3 bedroom,2,2541.81,11432.64,No
+Medium 2-3 bedroom,3,2587.94,11397.91,Yes
+4+ bedroom,5,3182.82,12572.9,Yes
+Medium 2-3 bedroom,3,2203.66,8520.92,Yes
+Medium 2-3 bedroom,2,2262.65,12119.68,No
+4+ bedroom,5,4350.67,18170.75,Yes
+Medium 2-3 bedroom,2,3249.11,14476.86,No
+4+ bedroom,4,4814.39,13433.86,No
+Medium 2-3 bedroom,3,2530.74,13961.96,No
+Medium 2-3 bedroom,2,2448.17,13471.0,No
+Medium 2-3 bedroom,2,3264.35,14845.75,No
+Medium 2-3 bedroom,2,2272.87,11866.13,No
+Medium 2-3 bedroom,2,2327.35,11069.18,No
+Medium 2-3 bedroom,2,1511.61,6973.33,Yes
+Flat/1-bedroom,1,1757.53,7657.31,Yes
+Medium 2-3 bedroom,2,2147.56,12680.94,No
+Medium 2-3 bedroom,2,2702.37,9753.06,No
+Medium 2-3 bedroom,2,2870.09,11276.81,No
+Medium 2-3 bedroom,3,2346.11,10276.71,No
+Medium 2-3 bedroom,3,2858.35,10722.2,No
+Medium 2-3 bedroom,3,2836.94,12542.77,No
+4+ bedroom,4,3331.97,16294.25,No
+4+ bedroom,4,3453.18,15697.85,Yes
+Medium 2-3 bedroom,2,2323.02,10468.96,No
+Flat/1-bedroom,1,1448.04,7964.8,Yes
+4+ bedroom,4,4640.3,20013.13,No
+Medium 2-3 bedroom,2,2527.78,11994.52,No
+Medium 2-3 bedroom,2,2759.26,14283.2,No
+4+ bedroom,4,4358.85,18214.64,No
+4+ bedroom,4,4269.83,18753.38,No
+Medium 2-3 bedroom,2,3105.82,9692.83,No
+4+ bedroom,4,4990.0,18754.95,No
+Flat/1-bedroom,1,1435.91,8594.4,No
+Medium 2-3 bedroom,3,2303.84,16393.99,No
+Medium 2-3 bedroom,2,3079.53,11876.61,No
+4+ bedroom,4,3348.06,15082.0,Yes
+4+ bedroom,5,3204.87,15294.81,Yes
+Medium 2-3 bedroom,2,2280.43,11541.5,Yes
+Medium 2-3 bedroom,2,2681.56,13602.43,No
+Flat/1-bedroom,1,1908.32,6390.58,No
+4+ bedroom,4,3271.01,16581.69,Yes
+4+ bedroom,6,4809.59,12195.37,No
+4+ bedroom,4,3297.31,17224.62,No
+Medium 2-3 bedroom,2,2260.77,12720.94,No
+Flat/1-bedroom,1,1643.12,8135.71,Yes
+Medium 2-3 bedroom,3,2325.38,9038.29,No
