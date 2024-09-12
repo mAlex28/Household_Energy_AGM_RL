@@ -1,8 +1,12 @@
 import matplotlib.pyplot as plt
+import numpy as np
 
 
 def generate_comparison_graphs(season, total_electricity_usage_trained, total_gas_usage_trained, total_cost_trained,
-                               total_electricity_usage_random, total_gas_usage_random, total_cost_random):
+                               total_electricity_usage_random, total_gas_usage_random, total_cost_random,
+                               electricity_usage_abm, gas_usage_abm):
+    ## Trained Agent vs Random Policy
+
     # Create labels for the x-axis
     labels = ['Trained Agent', 'Random Policy']
     x = range(2)
@@ -11,7 +15,8 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     fig, ax1 = plt.subplots(figsize=(10, 6))
 
     # Plot electricity usage on the primary y-axis (left side)
-    ax1.plot(x, [total_electricity_usage_trained, total_electricity_usage_random], marker='o', color='blue', label='Electricity Usage (kWh)', linewidth=2)
+    ax1.plot(x, [total_electricity_usage_trained, total_electricity_usage_random], marker='o', color='blue',
+             label='Electricity Usage (kWh)', linewidth=2)
     ax1.set_xlabel('Policy')
     ax1.set_ylabel('Electricity Usage (kWh)', color='blue')
     ax1.set_xticks(x)
@@ -24,7 +29,8 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
 
     # Create a secondary y-axis for gas usage (right side)
     ax2 = ax1.twinx()
-    ax2.plot(x, [total_gas_usage_trained, total_gas_usage_random], marker='s', color='red', label='Gas Usage (kWh)', linewidth=2)
+    ax2.plot(x, [total_gas_usage_trained, total_gas_usage_random], marker='s', color='red', label='Gas Usage (kWh)',
+             linewidth=2)
     ax2.set_ylabel('Gas Usage (kWh)', color='red')
     ax2.tick_params(axis='y', labelcolor='red')
 
@@ -55,3 +61,34 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     plt.tight_layout()
     plt.savefig(f'{season}_electricity_gas_cost_comparison_graph.png')
     plt.show()
+
+    ## ABM vs Trained Agent vs Random Policy
+
+    policies = ['ABM', 'Trained Agent', 'Random Policy']
+
+    electricity_usage = [electricity_usage_abm, total_electricity_usage_trained, total_electricity_usage_random]
+    gas_usage = [gas_usage_abm, total_electricity_usage_random, total_gas_usage_random]
+
+    x = np.arange(len(policies))  # the label locations
+    width = 0.35  # the width of the bars
+
+    fig, ax = plt.subplots()
+    rects1 = ax.bar(x - width / 2, electricity_usage, width, label='Electricity Usage')
+    rects2 = ax.bar(x + width / 2, gas_usage, width, label='Gas Usage')
+
+    ax.set_xlabel('Policy')
+    ax.set_ylabel('Energy Usage (kWh)')
+    ax.set_title(f'Energy Usage Comparison during {season.capitalize()}')
+    ax.set_xticks(x)
+    ax.set_xticklabels(policies)
+    ax.legend()
+
+    fig.tight_layout()
+    plt.savefig(f'energy_usage_comparison_{season}.png')
+    plt.show()
+
+
+
+
+
+

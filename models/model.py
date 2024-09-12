@@ -5,6 +5,7 @@ from mesa.datacollection import DataCollector
 import numpy as np
 from models.agent import Household
 
+
 class HouseholdEnergyModel(Model):
     def __init__(self, num_households, season):
         self.num_agents = num_households
@@ -46,7 +47,7 @@ class HouseholdEnergyModel(Model):
                 "Num People": "num_people",
                 "Energy Saving": "energy_saving",
                 "Season": "season"
-            },
+            }
         )
 
     '''

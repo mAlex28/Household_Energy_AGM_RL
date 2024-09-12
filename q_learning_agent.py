@@ -7,7 +7,7 @@ class QLearningAgent:
         Initialize the Q-learning agent.
 
         Parameters:
-        - state_size: List representing the size of the state space. For example, if we have 
+        - state_size: List representing the size of the state space. For example, if we have
           3 dimensions for electricity and 2 for gas, it could be [2, 2, 2, 2, 2].
         - action_size: List representing the size of the action space for both electricity and gas appliances.
         - alpha: Learning rate (how fast the agent updates Q-values).
@@ -29,7 +29,7 @@ class QLearningAgent:
 
         Parameters:
         - state: The current state of the environment (list of integers, including electricity and gas states).
-        
+
         Returns:
         - Tuple index corresponding to the given state for Q-table lookup.
         """
@@ -57,16 +57,15 @@ class QLearningAgent:
 
         # Exploit: best action for each appliance
         q_values = self.q_table[state_index]
-    
+
         # Find the index of the best action (the one with the highest Q-value)
-        # Since `q_values` may be multidimensional, we flatten it
+        # Since `q_values` may be multi-dimensional, we flatten it
         best_action_flat_index = np.argmax(q_values.flatten())
 
-        # Convert the flat index back to the multidimensional action index
+        # Convert the flat index back to the multi-dimensional action index
         best_action = np.unravel_index(best_action_flat_index, self.q_table[state_index].shape)
-    
-        return list(best_action)
 
+        return list(best_action)
 
     def learn(self, state, action, reward, next_state):
         """
@@ -87,7 +86,8 @@ class QLearningAgent:
         next_max_q = np.max(self.q_table[next_state_index])  # Max Q-value for the next state
 
         # Update the Q-value for the action taken
-        self.q_table[state_index][action_index] = current_q + self.alpha * (reward + self.gamma * next_max_q - current_q)
+        self.q_table[state_index][action_index] = current_q + self.alpha * (
+                    reward + self.gamma * next_max_q - current_q)
 
     def update_epsilon(self, decay_rate):
         """
