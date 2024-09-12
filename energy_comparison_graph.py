@@ -23,5 +23,5 @@ def generate_season_comparison_graphs(data):
 
     plt.suptitle('Comparison of Energy Costs')
     plt.tight_layout()
-    plt.savefig('energy_cost_comparison.png')
+    plt.savefig('visualisations/energy_cost_comparison.png')
     plt.show()

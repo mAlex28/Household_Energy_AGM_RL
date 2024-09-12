@@ -198,7 +198,7 @@ if __name__ == "__main__":
         # Save data to CSV file
         df = pd.DataFrame(household_data,
                           columns=["House Type", "Num People", "Electricity Usage", "Gas Usage", "Energy Saving"])
-        df.to_csv(f"household_energy_data_{season}.csv", index=False)
+        df.to_csv(f"data/household_energy_data_{season}.csv", index=False)
 
         # Store results
         results[f'{season}_trained'] = {

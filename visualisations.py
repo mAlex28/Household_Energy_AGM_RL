@@ -59,7 +59,7 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
 
     # Save the graph
     plt.tight_layout()
-    plt.savefig(f'{season}_electricity_gas_cost_comparison_graph.png')
+    plt.savefig(f'visualisations/{season}_electricity_gas_cost_comparison_graph.png')
     plt.show()
 
     ## ABM vs Trained Agent vs Random Policy
@@ -84,7 +84,7 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     ax.legend()
 
     fig.tight_layout()
-    plt.savefig(f'energy_usage_comparison_{season}.png')
+    plt.savefig(f'visualisations/energy_usage_comparison_{season}.png')
     plt.show()
 
 
