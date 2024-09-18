@@ -32,7 +32,7 @@ class EnergyEnvironment(gym.Env):
                 'lighting': 0.08,
                 'heating': 0.20,
                 'gas_heating': 0.5,
-                'gas_cooking': 0.5,
+                'gas_cooking': 0.4,
             }
         elif self.season == 'summer':
             self.appliance_usage = {
@@ -40,7 +40,7 @@ class EnergyEnvironment(gym.Env):
                 'fridge': 0.12,
                 'lighting': 0.05,
                 'cooling': 0.10,
-                'gas_cooking': 0.8,
+                'gas_cooking': 0.6,
             }
         else:
             raise ValueError("Season must be 'winter' or 'summer'")

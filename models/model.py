@@ -4,6 +4,7 @@ from mesa.space import MultiGrid
 from mesa.datacollection import DataCollector
 import numpy as np
 from models.agent import Household
+from q_learning_agent import QLearningAgent
 
 
 class HouseholdEnergyModel(Model):
@@ -12,6 +13,7 @@ class HouseholdEnergyModel(Model):
         self.season = season
         self.schedule = RandomActivation(self)
         self.grid = MultiGrid(width=10, height=10, torus=False)  # Grid for agents
+        self.q_learning_agent = QLearningAgent(state_size=[2], action_size=[2])
         self.running = True  # Model running state
 
         # Energy usage parameters annually (kWh) and their standard deviation
@@ -64,9 +66,10 @@ class HouseholdEnergyModel(Model):
     '''
         Collect data at each step of the simulation
     '''
+
     def step(self):
+        self.q_learning_agent.update_epsilon(0.99)  # Optionally decay epsilon over time
         self.schedule.step()
-        # Collect data at each step
         self.datacollector.collect(self)
 
     '''
