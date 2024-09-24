@@ -79,7 +79,7 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     avg_gas_usage_abm = total_abm_gas_usage / abm_count
 
     electricity_usage = [avg_electricity_usage_abm, total_electricity_usage_trained, total_electricity_usage_random]
-    gas_usage = [avg_gas_usage_abm, total_electricity_usage_random, total_gas_usage_random]
+    gas_usage = [avg_gas_usage_abm, total_gas_usage_trained, total_gas_usage_random]
 
     x = np.arange(len(policies))  # the label locations
     width = 0.35  # the width of the bars

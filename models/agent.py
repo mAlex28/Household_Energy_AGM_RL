@@ -39,22 +39,26 @@ class Household(Agent):
     '''
        Recalculate the energy and gas usage everytime agent is moved to a new position
     '''
-
     def step(self):
-        # Add Q-Learning agent interaction here
-        state = [self.electricity_usage, self.gas_usage]  # Simplified state representation
-        action = self.model.q_learning_agent.choose_action(state)
-
-        # Apply the action to adjust energy consumption
-        self.electricity_usage = self.apply_action_to_energy('electricity', action[0])
-        self.gas_usage = self.apply_action_to_energy('gas', action[1])
-
-        # Move the agent to a new position
         self.move()
+        self.electricity_usage = self.calculate_energy_usage('electricity')
+        self.gas_usage = self.calculate_energy_usage('gas')
 
-    def apply_action_to_energy(self, energy_type, action):
-        # Modify energy usage based on action (1: reduce, 0: keep normal)
-        usage = self.calculate_energy_usage(energy_type)
-        if action == 1:
-            usage *= 0.9  # Reduce by 10% as a simulation of energy-saving action
-        return max(usage, 0)
+    # def step(self):
+    #     # Add Q-Learning agent interaction here
+    #     state = [self.electricity_usage, self.gas_usage]  # Simplified state representation
+    #     action = self.model.q_learning_agent.choose_action(state)
+    #
+    #     # Apply the action to adjust energy consumption
+    #     self.electricity_usage = self.apply_action_to_energy('electricity', action[0])
+    #     self.gas_usage = self.apply_action_to_energy('gas', action[1])
+    #
+    #     # Move the agent to a new position
+    #     self.move()
+
+    # def apply_action_to_energy(self, energy_type, action):
+    #     # Modify energy usage based on action (1: reduce, 0: keep normal)
+    #     usage = self.calculate_energy_usage(energy_type)
+    #     if action == 1:
+    #         usage *= 0.9  # Reduce by 10% as a simulation of energy-saving action
+    #     return max(usage, 0)

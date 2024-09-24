@@ -32,23 +32,31 @@ class EnergyModel:
         gas_heating_multiplier = 3.5 if self.season == 'winter' else 1.0
 
         for _ in range(90):  # Simulate for 90 days
+            daily_energy_used, daily_gas_used = 0, 0
             for hour in range(24):
                 action = self.q_learning_agent.choose_action(state)  # Exploit best known action
                 state, reward, done, _ = env.step(action)
 
-                energy_used = -reward / (env.peak_price / 100 if 7 <= hour < 17 or 19 <= hour < 23 else env.off_peak_price / 100)
-                cost = energy_used * (env.peak_price / 100 if 7 <= hour < 17 or 19 <= hour < 23 else env.off_peak_price / 100)
+                # Electricity usage is inferred from the negative reward (representing cost)
+                energy_used = -reward / env.electricity_price
+                daily_energy_used += energy_used
 
+                # Gas usage (in kWh)
                 is_cold_hour = hour < 7 or hour >= 19
                 temperature_factor = 2.0 if is_cold_hour and self.season == 'winter' else 1.0
 
                 gas_heating = action[-2] * env.appliance_usage.get('gas_heating', 0) * gas_heating_multiplier * temperature_factor
                 gas_cooking = action[-1] * env.appliance_usage.get('gas_cooking', 0)
                 gas_used_in_kwh = (gas_heating + gas_cooking) * gas_to_kwh_conversion_factor
+                daily_gas_used += gas_used_in_kwh
 
-                total_energy_used += energy_used
-                total_gas_used += gas_used_in_kwh
-                total_cost += cost + (gas_used_in_kwh * 0.04)
+            daily_electricity_cost = (daily_energy_used * env.electricity_price)
+            daily_gas_cost = (daily_gas_used * env.gas_price)
+
+            # Accumulate total usage and cost
+            total_energy_used += daily_energy_used
+            total_gas_used += daily_gas_used
+            total_cost += daily_electricity_cost + daily_gas_cost    
 
         return total_energy_used, total_gas_used, total_cost
 
@@ -58,27 +66,44 @@ class EnergyModel:
         total_energy_used, total_gas_used, total_cost = 0, 0, 0
         gas_to_kwh_conversion_factor = 11.2
 
-        for day in range(90):
+        for _ in range(90):  # Simulate for 90 days
+            daily_energy_used, daily_gas_used = 0, 0
             for hour in range(24):
-                action = [
-                    np.random.choice([0, 1]),
-                    np.random.choice([0, 1]),
-                    1,  # Fridge is always on
-                    np.random.choice([0, 1]) if self.season == 'winter' else 0,  # Heating
-                    np.random.choice([0, 1], p=[0.8, 0.2]) if 7 <= hour < 9 or 17 <= hour < 19 else 0  # Cooking
-                ]
+
+                light_action = np.random.choice([0, 1])
+                washing_machine_action = np.random.choice([0, 1])
+                fridge_action = 1  # Assume fridge is always on
+
+                if self.season == 'winter':
+                    gas_heating_action = np.random.choice([0, 1], p=[0.9, 0.1] if hour < 7 or hour >= 19 else [0.8, 0.2])
+                else:
+                    gas_heating_action = 0  # No heating needed in summer
+
+                if 7 <= hour < 9 or 17 <= hour < 19:
+                    gas_cooking_action = np.random.choice([0, 1], p=[0.8, 0.2])  # Reduced probability for cooking
+                else:
+                    gas_cooking_action = 0
+
+                action = [light_action, washing_machine_action, fridge_action, gas_heating_action, gas_cooking_action]
                 state, reward, done, _ = env.step(action)
 
-                energy_used = -reward / (env.peak_price / 100 if 7 <= hour < 17 or 19 <= hour < 23 else env.off_peak_price / 100)
-                cost = energy_used * (env.peak_price / 100 if 7 <= hour < 17 or 19 <= hour < 23 else env.off_peak_price / 100)
+                # Electricity usage is inferred from the negative reward (representing cost)
+                energy_used = -reward / env.electricity_price
+                daily_energy_used += energy_used
 
+                # Gas usage (in kWh)
                 gas_heating = action[-2] * env.appliance_usage.get('gas_heating', 0)
                 gas_cooking = action[-1] * env.appliance_usage.get('gas_cooking', 0)
                 gas_used_in_kwh = (gas_heating + gas_cooking) * gas_to_kwh_conversion_factor
+                daily_gas_used += gas_used_in_kwh
 
-                total_energy_used += energy_used
-                total_gas_used += gas_used_in_kwh
-                total_cost += cost + (gas_used_in_kwh * 0.04)
+            daily_electricity_cost = (daily_energy_used * env.electricity_price)
+            daily_gas_cost = (daily_gas_used * env.gas_price)
+
+            # Accumulate total usage and cost
+            total_energy_used += daily_energy_used
+            total_gas_used += daily_gas_used
+            total_cost += daily_electricity_cost + daily_gas_cost
 
         return total_energy_used, total_gas_used, total_cost
 
@@ -93,7 +118,8 @@ class EnergyModel:
         household_data = self.collect_data()
         avg_usage_by_household_size = self.calculate_average_usage(household_data)
 
-        print(f"\nResults with trained agent for {self.num_rooms}-room house:")
+        # print(f"\nResults with trained agent for {self.num_rooms}-room house:")
+        print(f"\nResults with trained agent:")
         print(f"Electricity and Gas Usage for {self.season.capitalize()}:")
         print(f"Total Electricity Usage: {total_electricity_usage_trained} kWh\nTotal Gas Usage: {total_gas_usage_trained} kWh\nTotal Cost: £{total_cost_trained:.2f}\n")
 

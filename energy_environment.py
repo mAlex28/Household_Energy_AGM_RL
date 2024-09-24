@@ -21,9 +21,8 @@ class EnergyEnvironment(gym.Env):
 
     def set_seasonal_parameters(self):
         # Electricity prices (pence per kWh)
-        self.peak_price = 24.50  # pence per kWh
-        self.off_peak_price = 22.36  # pence per kWh
-        self.gas_price = 6.24  # pence per kWh
+        self.electricity_price = 0.2236  # £0.2272 per kWh
+        self.gas_price = 0.0548  # £0.0548 per kWh
 
         if self.season == 'winter':
             self.appliance_usage = {
@@ -71,13 +70,11 @@ class EnergyEnvironment(gym.Env):
         if 'cooling' in self.appliance_usage:
             electricity_used += 1 * self.appliance_usage['cooling']
 
-        if 7 <= self.current_hour < 17 or 19 <= self.current_hour < 23:
-            electricity_price = self.peak_price / 100
-        else:
-            electricity_price = self.off_peak_price / 100
+        # Convert to costs using constant prices
+        electricity_cost = electricity_used * self.electricity_price
+        gas_cost = gas_used * self.gas_price
 
-        gas_price = self.gas_price / 100
-        reward = -(electricity_used * electricity_price + gas_used * gas_price)
+        reward = -(electricity_cost + gas_cost)
 
         self.state = [light, washing_machine, fridge, gas_heating, gas_cooking]
         self.current_hour += 1
