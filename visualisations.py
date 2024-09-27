@@ -4,8 +4,8 @@ import numpy as np
 
 def generate_comparison_graphs(season, total_electricity_usage_trained, total_gas_usage_trained, total_cost_trained,
                                total_electricity_usage_random, total_gas_usage_random, total_cost_random,
-                               electricity_usage_abm, gas_usage_abm):
-    ## Trained Agent vs Random Policy
+                               avg_usage_by_household_size):
+    # Trained Agent vs Random Policy
 
     # Create labels for the x-axis
     labels = ['Trained Agent', 'Random Policy']
@@ -62,12 +62,24 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     plt.savefig(f'visualisations/{season}_electricity_gas_cost_comparison_graph.png')
     plt.show()
 
-    ## ABM vs Trained Agent vs Random Policy
-
+    # ABM vs Trained Agent vs Random Policy
     policies = ['ABM', 'Trained Agent', 'Random Policy']
 
-    electricity_usage = [electricity_usage_abm, total_electricity_usage_trained, total_electricity_usage_random]
-    gas_usage = [gas_usage_abm, total_electricity_usage_random, total_gas_usage_random]
+    # Calculate the overall average electricity and gas usage from ABM data
+    total_abm_electricity_usage = 0
+    total_abm_gas_usage = 0
+    abm_count = 0
+
+    for size, values in avg_usage_by_household_size.items():
+        total_abm_electricity_usage += values['avg_electricity_usage']
+        total_abm_gas_usage += values['avg_gas_usage']
+        abm_count += 1
+
+    avg_electricity_usage_abm = total_abm_electricity_usage / abm_count
+    avg_gas_usage_abm = total_abm_gas_usage / abm_count
+
+    electricity_usage = [avg_electricity_usage_abm, total_electricity_usage_trained, total_electricity_usage_random]
+    gas_usage = [avg_gas_usage_abm, total_gas_usage_trained, total_gas_usage_random]
 
     x = np.arange(len(policies))  # the label locations
     width = 0.35  # the width of the bars
@@ -86,9 +98,4 @@ def generate_comparison_graphs(season, total_electricity_usage_trained, total_ga
     fig.tight_layout()
     plt.savefig(f'visualisations/energy_usage_comparison_{season}.png')
     plt.show()
-
-
-
-
-
 
